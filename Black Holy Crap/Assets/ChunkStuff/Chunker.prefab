@@ -64,7 +64,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 5}
+  m_Size: {x: 1, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &114287403449339372
 MonoBehaviour:
@@ -77,9 +77,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd78639dfec80b94fa6a2257679d22d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackHoleyCrap: {fileID: 1724025428438726, guid: d98eb57c835b35b48b2f55eaee37ac1e,
+    type: 2}
   chunkList:
   - {fileID: 1084924606203652, guid: 6f1229e9b763b6a4b9feba2721725191, type: 2}
   - {fileID: 1664498170675458, guid: 745111eebf00ea7488f977c986bba848, type: 2}
   - {fileID: 1155026627365826, guid: a3045fb803ef81a48b9470587505e44e, type: 2}
-  chunkLength: 25
+  dangerList:
+  - {fileID: 1289088143876038, guid: bbf3cb96b694cf14685b664745fdaa48, type: 2}
+  - {fileID: 1225303385616376, guid: 31e1b267b098d38459b9e2ad70e798dc, type: 2}
+  - {fileID: 1894758258314370, guid: a759a0b32e05e9146a89a0f1d9ad7875, type: 2}
+  chunkLength: 60
   currentMode: 3

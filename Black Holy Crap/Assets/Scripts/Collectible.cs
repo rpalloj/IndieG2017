@@ -10,7 +10,10 @@ public class Collectible : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        if (score == null)
+        {
+            score = GameObject.Find("Canvas").GetComponent<Score>();
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +24,14 @@ public class Collectible : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        score.UpdateScore();
-        Destroy(gameObject);
+        if (score != null)
+        {
+            score.UpdateScore();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Attach score script to collectible object");
+        }
     }
 }

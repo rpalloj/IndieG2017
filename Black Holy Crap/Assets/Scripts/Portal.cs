@@ -9,17 +9,33 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		int choice = Random.Range (0, 3);
+		switch (choice) 
+		{
+		case 0:
+			directionToTeleport = MovementDirection.Right;
+			break;
+		case 1:
+			directionToTeleport = MovementDirection.Down;
+			break;
+		case 2:
+			directionToTeleport = MovementDirection.Up;
+			break;
+		case 3:
+			directionToTeleport = MovementDirection.Left;
+			break;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
     private void LoadScene()
     {
         SceneManager.LoadScene(directionToTeleport.ToString());
+		Score.diffinc += 0.5f;
+        Debug.Log("Speed: " + Score.diffinc);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -29,6 +45,4 @@ public class Portal : MonoBehaviour {
             LoadScene();
         }
     }
-
-
 }

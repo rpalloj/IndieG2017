@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black Holy Crap.Plugins", "Black Holy Crap.Plugins.csproj", "{05D38144-3894-C230-6320-6FB706AC3BCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black Holy Crap", "Black Holy Crap.csproj", "{FD8A191A-C9ED-4212-53D3-BFCA43DB2314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Black Holy Crap.Editor.Plugins", "Black Holy Crap.Editor.Plugins.csproj", "{8F756C8C-F948-BC5A-A41F-870936C6E487}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05D38144-3894-C230-6320-6FB706AC3BCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D38144-3894-C230-6320-6FB706AC3BCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D38144-3894-C230-6320-6FB706AC3BCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D38144-3894-C230-6320-6FB706AC3BCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8A191A-C9ED-4212-53D3-BFCA43DB2314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8A191A-C9ED-4212-53D3-BFCA43DB2314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8A191A-C9ED-4212-53D3-BFCA43DB2314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8A191A-C9ED-4212-53D3-BFCA43DB2314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F756C8C-F948-BC5A-A41F-870936C6E487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F756C8C-F948-BC5A-A41F-870936C6E487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F756C8C-F948-BC5A-A41F-870936C6E487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F756C8C-F948-BC5A-A41F-870936C6E487}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
