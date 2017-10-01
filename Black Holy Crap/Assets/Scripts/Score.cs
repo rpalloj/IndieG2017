@@ -9,13 +9,13 @@ public class Score : MonoBehaviour {
     public static Score instance = null;
 
     private float _score = 0;
-    private int _health = 3;
+    private int _health = 5;
 
     public Text score;
     //public Text distance;
     public Text health;
 	public static float diffinc = 1;
-
+	public AudioSource powerupAud;
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +45,14 @@ public class Score : MonoBehaviour {
 		score.text = Mathf.Round(_score).ToString();
     }
 
+	public void powerUp()
+	{
+		_score += 10;
+		_health += 1;
+		health.text = _health.ToString();
+		powerupAud.Play ();
+	}
+
     public void RemoveHealth()
     {
         --_health;
@@ -56,6 +64,9 @@ public class Score : MonoBehaviour {
         {
 			PlayerPrefs.SetInt("HighScore", (int)_score);
             SceneManager.LoadScene("Start");
+            diffinc = 1;
         }
     }
+
+
 }

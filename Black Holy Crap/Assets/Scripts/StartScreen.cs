@@ -38,4 +38,5 @@ public class StartScreen : MonoBehaviour
             Destroy(gameCanvas);
         }
     }
+
 }

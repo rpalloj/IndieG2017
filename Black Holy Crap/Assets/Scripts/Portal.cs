@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		int choice = Random.Range (0, 3);
+		int choice = Random.Range (0, 4);
 		switch (choice) 
 		{
 		case 0:
@@ -35,7 +35,6 @@ public class Portal : MonoBehaviour {
     {
         SceneManager.LoadScene(directionToTeleport.ToString());
 		Score.diffinc += 0.5f;
-        Debug.Log("Speed: " + Score.diffinc);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -44,5 +43,7 @@ public class Portal : MonoBehaviour {
         {
             LoadScene();
         }
+
     }
+
 }

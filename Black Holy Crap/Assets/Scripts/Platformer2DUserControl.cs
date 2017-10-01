@@ -17,6 +17,7 @@ namespace UnityStandardAssets._2D
 
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
+        private bool crouch = false;
 
 
         private void Awake()
@@ -49,13 +50,24 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (JetPackEnabled)
+            //if (JetPackEnabled)
+            //{
+            //    // Read the jump input in Update so button presses aren't missed.
+            // //   m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            //}
+            if (CrossPlatformInputManager.GetButtonDown("Fire1") || CrossPlatformInputManager.GetButtonDown("Jump"))
             {
-                // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                Vector2 currentsize = GetComponent<BoxCollider2D>().size;
+                GetComponent<BoxCollider2D>().size = new Vector2(currentsize.x / 2, currentsize.y / 2);
+                crouch = true;
+            }
+            if (CrossPlatformInputManager.GetButtonUp("Fire1") || CrossPlatformInputManager.GetButtonUp("Jump"))
+            {
+                Vector2 currentsize = GetComponent<BoxCollider2D>().size;
+                GetComponent<BoxCollider2D>().size = new Vector2(currentsize.x * 2, currentsize.y * 2);
+                crouch = false;
             }
         }
-
 
         private void FixedUpdate()
         {
@@ -66,22 +78,41 @@ namespace UnityStandardAssets._2D
             {
                 float h = CrossPlatformInputManager.GetAxis("Horizontal");
                 // Pass all parameters to the character control script.
-                m_Character.Move(h, false, m_Jump);
+                if (crouch)
+                {
+                    h /= 5;
+                }
+                m_Character.Move(h, 0, crouch, m_Jump);
 
                 //Add contant force if we're going up
                 if (currentDirection == MovementDirection.Up)
                 {
-					_rigidBody.velocity = new Vector2(_rigidBody.velocity.x, RocketForceGoingUp + Score.diffinc);
-                }else if (currentDirection == MovementDirection.Down)
+                    _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, RocketForceGoingUp + Score.diffinc);
+                }
+                else if (currentDirection == MovementDirection.Down)
                 {
-					_rigidBody.velocity = new Vector2(_rigidBody.velocity.x, -RocketForceGoingUp - Score.diffinc);
+                    _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, -RocketForceGoingUp - Score.diffinc);
 
                 }
             }
             else
             {
+                float v = CrossPlatformInputManager.GetAxis("Vertical");
+
+                if (crouch)
+                {
+                    v /= 5;
+                }
+
                 //Left and Right Movement
-				m_Character.Move(scrollDirection + (Score.diffinc * 0.1F), false, m_Jump);
+                if (currentDirection == MovementDirection.Right)
+                {
+                    m_Character.Move(scrollDirection + (Score.diffinc * 0.1F), v, crouch, m_Jump);
+                }else
+                {
+                    m_Character.Move(scrollDirection - (Score.diffinc * 0.1F), v, crouch, m_Jump);
+
+                }
             }
             m_Jump = false;
         }
