@@ -37,7 +37,9 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateScore ();
-	}
+        if (Input.GetKey("escape"))
+            Application.Quit();
+    }
 
     public void UpdateScore()
     {

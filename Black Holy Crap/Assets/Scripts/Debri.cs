@@ -9,11 +9,13 @@ public class Debri : MonoBehaviour
     private bool ObjectHit = false;
     Animator anim;
 	public bool powerup = false;
+    AudioSource audio;
 
     // Use this for initialization
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        audio = GetComponent<AudioSource>();
         if (score == null)
         {
             score = GameObject.Find("Canvas").GetComponent<Score>();
@@ -28,6 +30,8 @@ public class Debri : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        float waitTime = 0.25F;
+
         if (!ObjectHit)
         {
             if (score != null)
@@ -36,11 +40,16 @@ public class Debri : MonoBehaviour
 				anim.SetBool ("Destroy", true);
 				if (powerup) {
 					score.powerUp ();
-					GetComponent<AudioSource> ().Play ();
-				}
-				else
+                    waitTime = 0;
+                    if(audio != null)
+                    {
+                        audio.Play();
+                    }
+					//GetComponent<AudioSource> ().Play ();
+                }
+                else
 					score.RemoveHealth ();
-				StartCoroutine (DestroyObject ());
+				StartCoroutine (DestroyObject (waitTime));
 			}
             else
             {
@@ -49,9 +58,9 @@ public class Debri : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyObject()
+    IEnumerator DestroyObject(float waitTime)
     {
-        yield return new WaitForSeconds(0.25F);
+        yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
     }
 }

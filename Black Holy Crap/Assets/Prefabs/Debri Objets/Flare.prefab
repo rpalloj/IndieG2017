@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61741192574682748}
   m_Layer: 0
   m_Name: Flare
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 0}
+  powerup: 0
 --- !u!212 &212729590413424416
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -97,21 +97,43 @@ namespace UnityStandardAssets._2D
                     Flip();
                 }
             }
-            // If the player should jump...
-            if (m_Grounded && jump)
+
+            if (!collidedWithDebri)
             {
-                // Add a vertical force to the player.
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-                if (!collidedWithDebri)
+                if (verticalMove > 0)
                 {
-                    m_Anim.SetBool("Jump", jump);
+                    m_Anim.SetInteger("PlayerState", 1);
+                }
+                else if (verticalMove < 0)
+                {
+                    m_Anim.SetInteger("PlayerState", 3);
+                }
+                else
+                {
+                    m_Anim.SetInteger("PlayerState", 0);
                 }
             }
             else
             {
-                m_Anim.SetBool("Jump", false);
+                m_Anim.SetInteger("PlayerState", 2);
+                StartCoroutine(ResetPlayerState(0.2F));
 
             }
+            //// If the player should jump...
+            //if (m_Grounded && jump)
+            //{
+            //    // Add a vertical force to the player.
+            //    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            //    if (!collidedWithDebri)
+            //    {
+            //        m_Anim.SetBool("Jump", jump);
+            //    }
+            //}
+            //else
+            //{
+            //    m_Anim.SetBool("Jump", false);
+
+            //}
         }
 
 
@@ -132,7 +154,6 @@ namespace UnityStandardAssets._2D
             {
                 collidedWithDebri = true;
                 m_Anim.SetInteger("PlayerState", 2);
-                StartCoroutine(ResetPlayerState(0.1F));
             }
         }
         private IEnumerator ResetPlayerState(float waitTime)
